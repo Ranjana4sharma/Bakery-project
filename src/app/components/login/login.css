@@ -1,0 +1,275 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css');
+
+/* =========================================================
+   General Styles
+========================================================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.login-form {
+  font-family: 'Poppins', sans-serif;
+  background: url('https://images.pexels.com/photos/8805969/pexels-photo-8805969.jpeg') no-repeat center center;
+  background-size: contain; /* Ensures the entire image is visible */
+  background-color: #fef9f3; /* Fallback warm beige color */
+  background-repeat: no-repeat; /* Prevents tiling */
+  min-height: 100vh;
+  padding: 60px 20px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-form::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(92, 64, 51, 0.3); /* Lighter chocolate overlay to improve image visibility */
+  z-index: 1;
+}
+
+/* =========================================================
+   Animation Keyframes
+========================================================= */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scalePulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+  100% { transform: scale(1); }
+}
+
+@keyframes floatShape {
+  0% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(5deg); }
+  100% { transform: translateY(0) rotate(0deg); }
+}
+
+/* =========================================================
+   Header
+========================================================= */
+.login-form h2 {
+  font-size: 2.8rem;
+  font-family: 'Dancing Script', cursive;
+  color: #ffcc99; /* Soft peach */
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 2;
+  animation: fadeInUp 0.8s ease-out;
+}
+
+/* =========================================================
+   Radio Buttons
+========================================================= */
+.login-form label {
+  font-size: 1.1rem;
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-right: 15px;
+  position: relative;
+  z-index: 2;
+}
+
+.login-form input[type="radio"] {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #ff7d2b;
+  border-radius: 50%;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.login-form input[type="radio"]:checked::before {
+  content: '\f00c'; /* Checkmark icon */
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  color: #ff7d2b;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 12px;
+}
+
+.login-form input[type="radio"]:hover {
+  border-color: #e07b39;
+}
+
+/* =========================================================
+   Form Fields
+========================================================= */
+.login-form div {
+  margin-top: 16px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 8px 25px rgba(139, 69, 19, 0.2);
+  position: relative;
+  z-index: 2;
+  animation: fadeInUp 1s ease-out;
+}
+
+.login-form label {
+  display: block;
+  font-size: 1rem;
+  color: #5c4033; /* Chocolate brown */
+  font-weight: 600;
+  margin-bottom: 10px;
+  position: relative;
+  padding-left: 30px;
+}
+
+.login-form label::before {
+  content: '\f007'; /* User icon for name/username; phone for phone; lock for password */
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  color: #ff7d2b; /* Vibrant orange */
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1rem;
+}
+
+.login-form label[for="phone"]::before {
+  content: '\f095'; /* Phone icon */
+}
+
+.login-form label[for="password"]::before {
+  content: '\f023'; /* Lock icon */
+}
+
+.login-form input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ffcc99; /* Soft peach */
+  border-radius: 10px;
+  font-size: 1rem;
+  color: #5c4033;
+  background: rgba(255, 255, 255, 0.8);
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+}
+
+.login-form input:focus {
+  outline: none;
+  border-color: #e07b39;
+  box-shadow: 0 0 10px rgba(224, 123, 57, 0.3);
+}
+
+.login-form input::placeholder {
+  color: #7f8c8d;
+}
+
+/* =========================================================
+   Submit Button
+========================================================= */
+.login-form button {
+  background: linear-gradient(135deg, #ff7d2b, #ff9f5a);
+  color: white;
+  padding: 15px 40px;
+  border: none;
+  border-radius: 25px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 16px;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 2;
+}
+
+.login-form button::before {
+  content: '\f090'; /* Sign-in icon */
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  font-size: 1rem;
+}
+
+.login-form button:hover {
+  background: linear-gradient(135deg, #e07b39, #ffcc99);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(224, 123, 57, 0.3);
+  animation: scalePulse 0.5s;
+}
+
+.login-form button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* =========================================================
+   Responsive Design
+========================================================= */
+@media (max-width: 768px) {
+  .login-form {
+    padding: 40px 15px;
+  }
+
+  .login-form h2 {
+    font-size: 2.2rem;
+  }
+
+  .login-form div {
+    padding: 15px;
+  }
+
+  .login-form label {
+    font-size: 0.9rem;
+  }
+
+  .login-form input {
+    font-size: 0.9rem;
+  }
+
+  .login-form button {
+    padding: 12px 30px;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-form h2 {
+    font-size: 1.8rem;
+  }
+
+  .login-form label {
+    font-size: 0.9rem;
+    margin-right: 10px;
+  }
+
+  .login-form div {
+    padding: 10px;
+  }
+
+  .login-form input {
+    font-size: 0.85rem;
+  }
+
+  .login-form button {
+    padding: 10px 25px;
+    font-size: 0.9rem;
+  }
+}

@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Quicksand:wght@400;500&display=swap');
+
+.wishlist-container {
+  background: #fff9f4;
+  border-radius: 14px;
+  padding: 28px;
+  max-width: 780px;
+  margin: auto;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.05);
+  font-family: 'Quicksand', sans-serif;
+}
+
+h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.3rem;
+  color: #a0522d; /* warm bakery brown */
+  text-align: center;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+h2::after {
+  content: '';
+  width: 65px;
+  height: 4px;
+  background: #f4a261; /* orange accent */
+  display: block;
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+.empty-message {
+  text-align: center;
+  color: #8b6f47;
+  font-style: italic;
+  background: #fff3e8;
+  padding: 14px;
+  border-radius: 10px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: white;
+  border-radius: 12px;
+  padding: 14px 18px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.04);
+  transition: all 0.25s ease;
+  border-left: 6px solid #f4a261; /* accent edge */
+}
+
+li:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.07);
+}
+
+/* Product Info with Icon + Name */
+.product-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.product-icon {
+  width: 28px;
+  height: 28px;
+}
+
+.product-name {
+  font-weight: 500;
+  color: #5c4033;
+  font-size: 1.05rem;
+}
+
+.product-price {
+  font-weight: bold;
+  color: #b5651d;
+  margin-right: auto;
+  margin-left: 20px;
+}
+
+/* Remove Button */
+button {
+  background: linear-gradient(145deg, #d64545, #e74c3c);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+button:hover {
+  background: linear-gradient(145deg, #e74c3c, #ff675c);
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(231, 76, 60, 0.3);
+}
+.back-btn {
+  margin-bottom: 18px;
+  padding: 6px 12px;
+  background: #eee;
+  border: none;
+  border-radius: 4px;
+  color: #a0522d;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.back-btn:hover {
+  background: #f4a261;
+  color: white;
+}

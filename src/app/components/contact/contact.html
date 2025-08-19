@@ -1,0 +1,33 @@
+<section class="contact-section">
+  <h1>Contact & Feedback</h1>
+  <p>We’d love to hear from you! Please fill out the form below.</p>
+
+  <form (ngSubmit)="submit()" #contactForm="ngForm">
+    
+    <label>Your Name*</label>
+    <input type="text" [(ngModel)]="name" name="name" required placeholder="Enter your name" />
+
+    <label>Message Type*</label>
+    <select [(ngModel)]="type" name="type" required>
+      <option value="feedback">Feedback</option>
+      <option value="contact">Contact</option>
+      <option value="complaint">Complaint</option>
+    </select>
+
+    <div *ngIf="type === 'feedback'">
+      <label>Rating*</label>
+<select [(ngModel)]="rating" name="rating" required>
+  <option value="" disabled>Select rating</option>
+  <option *ngFor="let r of [5,4,3,2,1]" [value]="r">
+    {{ '★'.repeat(r) }}{{ '☆'.repeat(5 - r) }}
+  </option>
+</select>
+
+    </div>
+
+    <label>Message*</label>
+    <textarea [(ngModel)]="message" name="message" rows="5" required placeholder="Type your message..."></textarea>
+
+    <button type="submit">Send</button>
+  </form>
+</section>

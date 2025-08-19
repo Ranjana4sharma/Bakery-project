@@ -1,0 +1,135 @@
+/* Footer Section */
+.footer {
+  padding: 40px 5%;
+  background: #ffbbbb url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="20" fill="%23ffcc99" opacity="0.3"/><path d="M30 70 Q50 90 70 70 Q50 50 30 70" fill="%23ff9999" opacity="0.3"/></svg>') repeat;
+  animation: bakeryFloat 10s infinite ease-in-out;
+  color: #333;
+  font-size: 1rem;
+  border-top: 2px solid rgba(139, 69, 19, 0.2);
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1400px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.footer-info,
+.footer-links,
+.footer-contact,
+.footer-socials {
+  flex: 1;
+  min-width: 200px;
+}
+
+.footer-info h3,
+.footer-links h4,
+.footer-contact h4,
+.footer-socials h4 {
+  font-size: 1.8rem;
+  color: #8b4513;
+  margin-bottom: 20px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.footer-info p {
+  color: #333;
+  margin-bottom: 15px;
+  line-height: 1.6;
+}
+
+.footer-points {
+  list-style: none;
+  padding: 0;
+  color: #555;
+}
+
+.footer-points li {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-links a,
+.footer-contact p {
+  display: block;
+  color: #333;
+  text-decoration: none;
+  margin-bottom: 10px;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #ff6b35;
+}
+
+.footer-socials a {
+  margin-right: 15px;
+  display: inline-block;
+}
+
+.footer-socials img {
+  width: 30px;
+  height: 30px;
+  transition: transform 0.3s ease;
+}
+
+.footer-socials a:hover img {
+  transform: scale(1.2);
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 20px;
+  border-top: 1px solid rgba(139, 69, 19, 0.1);
+  margin-top: 30px;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.footer-bottom p {
+  margin: 0;
+}
+
+/* Responsive Design for Footer */
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer-info,
+  .footer-links,
+  .footer-contact,
+  .footer-socials {
+    margin-bottom: 20px;
+  }
+
+  .footer-socials a {
+    margin: 0 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding: 30px 5%;
+  }
+
+  .footer-info h3,
+  .footer-links h4,
+  .footer-contact h4,
+  .footer-socials h4 {
+    font-size: 1.5rem;
+  }
+
+  .footer-socials img {
+    width: 25px;
+    height: 25px;
+  }
+}

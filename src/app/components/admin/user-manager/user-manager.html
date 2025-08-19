@@ -1,0 +1,36 @@
+<div class="user-manager-container">
+  <h2>User Management</h2>
+
+  <input
+    type="text"
+    [(ngModel)]="searchTerm"
+    placeholder="Search by username or email"
+  />
+  <button (click)="searchUsers()">Search</button>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Role</th>
+        <th>Active</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{ user.username }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.role }}</td>
+        <td>{{ user.active ? 'Yes' : 'No' }}</td>
+        <td>
+          <!-- ⬇️ Only show Toggle Active, removed Toggle Role -->
+          <button (click)="toggleActive(user)">
+            {{ user.active ? 'Suspend' : 'Activate' }}
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

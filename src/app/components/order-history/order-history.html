@@ -1,0 +1,29 @@
+
+
+<div class="order-history-container">
+  <h2>Your Order History</h2>
+
+  <table class="order-history-table" *ngIf="orders.length > 0; else noOrders">
+    <thead>
+      <tr>
+        <th>Order ID</th>
+        <th>Date</th>
+        <th>Status</th>
+        <th>Total Amount</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let order of orders">
+        <td>{{ order.id }}</td>
+        <td>{{ order.orderDate | date:'medium' }}</td>
+        <td>{{ order.status }}</td>
+        <td>₹{{ order.totalAmount }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- This must exist or else Angular will throw error -->
+  <ng-template #noOrders>
+    <p>You have not placed any orders yet.</p>
+  </ng-template>
+</div>

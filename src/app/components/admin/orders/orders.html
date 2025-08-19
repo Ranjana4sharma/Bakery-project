@@ -1,0 +1,78 @@
+<div class="orders-container">
+  <h2>Order Management</h2>
+
+  <div class="filters">
+    <input
+      type="text"
+      placeholder="Search orders..."
+      [(ngModel)]="searchTerm"
+      (input)="filterOrders()"
+    />
+
+    <select [(ngModel)]="statusFilter" (change)="filterOrders()">
+      <option value="all">All Statuses</option>
+      <option value="pending">Pending</option>
+      <option value="processing">Processing</option>
+      <option value="shipped">Shipped</option>
+      <option value="delivered">Delivered</option>
+      <option value="cancelled">Cancelled</option>
+    </select>
+  </div>
+
+  <!-- Back Button -->
+  <button class="btn-bakery" (click)="goBack()" style="margin-bottom: 15px;">
+    ⬅ Back
+  </button>
+
+  <table *ngIf="filteredOrders.length > 0; else noOrders">
+    <thead>
+      <tr>
+        <th>Order ID</th>
+        <th>Customer</th>
+        <th>Status</th>
+        <th>Total Amount</th>
+        <th>Items</th>
+        <th>Update Status</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let order of filteredOrders">
+        <td>{{ order.id }}</td>
+        <td>{{ getCustomerName(order.username) }}</td>
+        <td>
+          <span class="status-{{ order.status }}">
+            {{ order.status }}
+          </span>
+        </td>
+        <td>₹{{ order.totalAmount }}</td>
+        <td>
+          {{ order.items[0]?.name }}
+          <span *ngIf="order.items.length > 1">
+            (+{{ order.items.length - 1 }} more)
+          </span>
+        </td>
+        <td>
+          <select [value]="order.status" (change)="updateStatus(order, $event)">
+            <option value="pending">Pending</option>
+            <option value="processing">Processing</option>
+            <option value="shipped">Shipped</option>
+            <option value="delivered">Delivered</option>
+            <option value="cancelled">Cancelled</option>
+          </select>
+        </td>
+        <td>
+          <button class="btn-bakery" style="background: var(--error-red)" (click)="deleteOrder(order.id)">
+            🗑 Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <ng-template #noOrders>
+    <div class="no-orders">
+      No orders found.
+    </div>
+  </ng-template>
+</div>

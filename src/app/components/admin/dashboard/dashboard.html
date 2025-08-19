@@ -1,0 +1,70 @@
+<div class="dashboard-container">
+  <h2>Admin Dashboard</h2>
+
+  <div class="stats-cards">
+    <div class="card"><h3>Total Orders</h3><p>{{ totalOrders }}</p></div>
+    <div class="card"><h3>New Orders</h3><p>{{ newOrders }}</p></div>
+    <div class="card"><h3>Total Users</h3><p>{{ totalUsers }}</p></div>
+    <div class="card"><h3>Total Products</h3><p>{{ totalProducts }}</p></div>
+  </div>
+
+  <section class="recent-section">
+    <div>
+      <h4>Recent Orders</h4>
+      <ul>
+        <li *ngFor="let order of recentOrders">
+          Order #{{ order.id }} by {{ getUserName(order.username) }} – 
+          {{ order.items[0]?.name }}
+          <span *ngIf="order.items.length > 1">
+            (+{{ order.items.length - 1 }} more)
+          </span>
+          – Status: {{ order.status }} – ₹{{ order.totalAmount }}
+        </li>
+      </ul>
+      <button (click)="gotoOrders()">View All Orders</button>
+    </div>
+
+    <div>
+      <h4>Recent Users</h4>
+      <ul>
+        <li *ngFor="let user of recentUsers">
+          {{ user.name }} ({{ user.email }})
+        </li>
+      </ul>
+      <button (click)="gotoUsers()">View All Users</button>
+      <button (click)="gotoProducts()">Manage Products</button>
+      <button (click)="gotoOffers()">Manage Offers</button>
+    </div>
+  </section>
+
+  <!-- New: Messages Management -->
+  <section class="messages-section">
+    <h3>User Messages</h3>
+    <label>
+      Filter:
+      <select [(ngModel)]="filterType">
+        <option value="all">All</option>
+        <option value="feedback">Feedback</option>
+        <option value="contact">Contact</option>
+        <option value="complaint">Complaint</option>
+      </select>
+    </label>
+
+    <div *ngFor="let m of filteredMessages()" class="msg-card">
+      <p><strong>{{ m.name }}</strong> ({{ m.type }})</p>
+      <p *ngIf="m.rating">Rating: ⭐ {{ m.rating }}</p>
+      <p>{{ m.message }}</p>
+      <small>{{ m.timestamp | date: 'short' }}</small>
+
+      <div *ngIf="m.type === 'feedback'">
+        <label>
+          <input type="checkbox" [checked]="m.visibleOnHome" (change)="toggleVisible(m)">
+          Show on Home
+        </label>
+      </div>
+
+      <textarea [(ngModel)]="m.adminReply" placeholder="Reply to user..."></textarea>
+      <button (click)="replyTo(m)">Save Reply</button>
+    </div>
+  </section>
+</div>

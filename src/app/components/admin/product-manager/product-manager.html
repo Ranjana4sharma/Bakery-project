@@ -1,0 +1,90 @@
+<h2>Manage Products</h2>
+
+<div class="product-form">
+  <h3>{{ editedProduct ? 'Edit Product' : 'Add New Product' }}</h3>
+  <form (ngSubmit)="saveProduct()" #productForm="ngForm" novalidate>
+    <label>Name:</label>
+    <input type="text" [(ngModel)]="name" name="name" required minlength="3" #nameInput="ngModel" />
+    <div *ngIf="nameInput.invalid && nameInput.touched" class="error">
+      Name is required (min 3 characters)
+    </div>
+
+    <label>Category:</label>
+    <select [(ngModel)]="category" name="category" required #categoryInput="ngModel">
+      <option value="" disabled>Select category</option>
+      <option *ngFor="let c of categories" [value]="c">{{ c }}</option>
+    </select>
+    <div *ngIf="categoryInput.invalid && categoryInput.touched" class="error">
+      Category is required
+    </div>
+
+    <label>Price (₹):</label>
+    <input type="number" [(ngModel)]="price" name="price" required min="1" #priceInput="ngModel" />
+    <div *ngIf="priceInput.invalid && priceInput.touched" class="error">
+      Price must be at least ₹1
+    </div>
+
+    <label>Description:</label>
+    <textarea [(ngModel)]="description" name="description" required minlength="5" #descInput="ngModel"></textarea>
+    <div *ngIf="descInput.invalid && descInput.touched" class="error">
+      Description is required (min 5 characters)
+    </div>
+
+    <label>Image URL:</label>
+    <input type="text" [(ngModel)]="imageUrl" name="imageUrl" required #imgInput="ngModel" />
+    <div *ngIf="imgInput.invalid && imgInput.touched" class="error">
+      Image URL is required
+    </div>
+
+    <div class="image-preview" *ngIf="isValidUrl(imageUrl)">
+      <img [src]="imageUrl" alt="Preview" />
+    </div>
+
+    <label><input type="checkbox" [(ngModel)]="signature" name="signature" /> Signature Dish</label>
+    <label><input type="checkbox" [(ngModel)]="todaysSpecial" name="todaysSpecial" /> Today's Special</label>
+    <label><input type="checkbox" [(ngModel)]="visible" name="visible" /> Visible</label>
+
+    <div class="form-buttons">
+      <button type="submit" [disabled]="productForm.invalid">{{ editedProduct ? 'Update' : 'Add' }}</button>
+      <button type="button" (click)="cancelEdit()">Cancel</button>
+    </div>
+  </form>
+</div>
+
+<div class="product-list">
+  <h3>Existing Products</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Price (₹)</th>
+        <th>Description</th>
+        <th>Image URL</th>
+        <th>Signature</th>
+        <th>Today’s Special</th>
+        <th>Visible</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let p of products">
+        <td>{{ p.name }}</td>
+        <td>{{ p.category }}</td>
+        <td>{{ p.price }}</td>
+        <td>{{ p.description }}</td>
+        <td class="image-url-cell">
+          <img *ngIf="p.imageUrl" [src]="p.imageUrl" alt="{{ p.name }}" />
+          <span>{{ p.imageUrl }}</span>
+        </td>
+        <td><input type="checkbox" [checked]="p.signature" disabled /></td>
+        <td><input type="checkbox" [checked]="p.todaysSpecial" disabled /></td>
+        <td><input type="checkbox" [checked]="p.visible !== false" disabled /></td>
+        <td>
+          <button (click)="startEdit(p)">Edit</button>
+          <button (click)="deleteProduct(p)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,21 @@
+<h2>{{ editMode ? 'Edit Product' : 'Add New Product' }}</h2>
+
+<form #form="ngForm" (ngSubmit)="onSubmit(form)" novalidate>
+  <label>Name:</label>
+  <input type="text" [(ngModel)]="product.name" name="name" required />
+
+  <label>Description:</label>
+  <textarea [(ngModel)]="product.description" name="description"></textarea>
+
+  <label>Price:</label>
+  <input type="number" [(ngModel)]="product.price" name="price" required />
+
+  <label>Category:</label>
+  <input type="text" [(ngModel)]="product.category" name="category" />
+
+  <label>Image URL:</label>
+  <input type="text" [(ngModel)]="product.imageUrl" name="imageUrl" />
+
+  <button type="submit" [disabled]="form.invalid">Save</button>
+  <button type="button" (click)="onCancel()">Cancel</button>
+</form>

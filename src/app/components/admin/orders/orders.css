@@ -1,0 +1,666 @@
+/* ===== ENHANCED BAKERY ORDERS STYLES - TRADITIONAL + MODERN ===== */
+
+/* Import Google Fonts for bakery aesthetics */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap');
+
+/* CSS Variables for consistent theming */
+:root {
+  --primary-brown: #8b4513;
+  --warm-cream: #fdf6e3;
+  --golden-amber: #d4821a;
+  --deep-chocolate: #6b3410;
+  --soft-wheat: #f5e6d3;
+  --modern-accent: #ff6b35;
+  --success-green: #27ae60;
+  --warning-orange: #f39c12;
+  --error-red: #e74c3c;
+  --text-dark: #2c1810;
+  --text-light: #666;
+  --shadow-soft: 0 4px 20px rgba(139, 69, 19, 0.1);
+  --shadow-hover: 0 8px 30px rgba(139, 69, 19, 0.15);
+  --gradient-warm: linear-gradient(135deg, var(--warm-cream) 0%, var(--soft-wheat) 100%);
+  --gradient-header: linear-gradient(135deg, var(--primary-brown) 0%, var(--deep-chocolate) 100%);
+}
+
+/* Main Container with bakery ambiance */
+.orders-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: var(--gradient-warm);
+  min-height: 100vh;
+  font-family: 'Open Sans', sans-serif;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Decorative bakery elements */
+.orders-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, 
+    var(--golden-amber) 0%, 
+    var(--modern-accent) 25%, 
+    var(--golden-amber) 50%, 
+    var(--modern-accent) 75%, 
+    var(--golden-amber) 100%);
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 1; }
+}
+
+/* Header with traditional bakery elegance */
+.orders-container h2 {
+  font-family: 'Playfair Display', serif;
+  color: var(--primary-brown);
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 2.5rem;
+  text-align: center;
+  position: relative;
+  text-shadow: 2px 2px 4px rgba(139, 69, 19, 0.1);
+  letter-spacing: -0.5px;
+}
+
+.orders-container h2::after {
+  content: '🥖';
+  position: absolute;
+  right: -60px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  animation: bounce 2s ease-in-out infinite;
+}
+
+.orders-container h2::before {
+  content: '🍰';
+  position: absolute;
+  left: -60px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  animation: bounce 2s ease-in-out infinite reverse;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(-50%); }
+  50% { transform: translateY(-60%); }
+}
+
+/* Modern Filters Section with traditional warmth */
+.filters {
+  display: flex;
+  gap: 1.2rem;
+  margin-bottom: 2.5rem;
+  padding: 2rem;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(245, 230, 211, 0.9) 100%);
+  border-radius: 16px;
+  border: 2px solid rgba(139, 69, 19, 0.1);
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.filters:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-2px);
+}
+
+/* Enhanced Input Styling */
+.filters input {
+  flex: 1;
+  padding: 14px 18px;
+  border: 2px solid rgba(139, 69, 19, 0.2);
+  border-radius: 12px;
+  font-size: 1rem;
+  background: linear-gradient(145deg, #ffffff 0%, #fafafa 100%);
+  transition: all 0.3s ease;
+  color: var(--text-dark);
+  font-family: 'Open Sans', sans-serif;
+}
+
+.filters input::placeholder {
+  color: var(--text-light);
+  font-style: italic;
+}
+
+.filters input:focus {
+  outline: none;
+  border-color: var(--golden-amber);
+  box-shadow: 0 0 0 4px rgba(212, 130, 26, 0.2);
+  background: white;
+  transform: scale(1.02);
+}
+
+/* Modern Select Styling */
+.filters select {
+  padding: 14px 18px;
+  border: 2px solid rgba(139, 69, 19, 0.2);
+  border-radius: 12px;
+  font-size: 1rem;
+  background: linear-gradient(145deg, #ffffff 0%, #fafafa 100%);
+  cursor: pointer;
+  min-width: 160px;
+  transition: all 0.3s ease;
+  color: var(--text-dark);
+  font-family: 'Open Sans', sans-serif;
+}
+
+.filters select:focus {
+  outline: none;
+  border-color: var(--golden-amber);
+  box-shadow: 0 0 0 4px rgba(212, 130, 26, 0.2);
+  transform: scale(1.02);
+}
+
+/* Enhanced Table with bakery charm */
+table {
+  width: 100%;
+  background: linear-gradient(145deg, #ffffff 0%, #fefefe 100%);
+  border-radius: 16px;
+  border: none;
+  border-collapse: separate;
+  border-spacing: 0;
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+table:hover {
+  box-shadow: var(--shadow-hover);
+}
+
+/* Elegant Table Header */
+thead {
+  background: var(--gradient-header);
+  color: white;
+  position: relative;
+}
+
+thead::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, 
+    var(--golden-amber) 0%, 
+    var(--modern-accent) 50%, 
+    var(--golden-amber) 100%);
+}
+
+thead th {
+  padding: 1.5rem 1rem;
+  text-align: left;
+  font-weight: 600;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
+  border: none;
+  position: relative;
+}
+
+thead th:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 25%;
+  bottom: 25%;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Interactive Table Body */
+tbody tr {
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+tbody tr:nth-child(even) {
+  background: linear-gradient(135deg, rgba(245, 230, 211, 0.3) 0%, rgba(253, 246, 227, 0.3) 100%);
+}
+
+tbody tr:hover {
+  background: linear-gradient(135deg, var(--soft-wheat) 0%, rgba(212, 130, 26, 0.1) 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(139, 69, 19, 0.15);
+}
+
+tbody tr:hover::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--golden-amber);
+  border-radius: 0 4px 4px 0;
+}
+
+tbody td {
+  padding: 1.2rem 1rem;
+  color: var(--text-dark);
+  vertical-align: middle;
+  font-weight: 400;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+/* Modern Status Select with bakery flair */
+tbody select {
+  padding: 10px 16px;
+  border: 2px solid rgba(139, 69, 19, 0.2);
+  border-radius: 8px;
+  font-size: 0.9rem;
+  background: linear-gradient(145deg, #ffffff 0%, #fafafa 100%);
+  cursor: pointer;
+  min-width: 130px;
+  transition: all 0.3s ease;
+  color: var(--text-dark);
+  font-weight: 500;
+}
+
+tbody select:focus {
+  outline: none;
+  border-color: var(--golden-amber);
+  box-shadow: 0 0 0 3px rgba(212, 130, 26, 0.2);
+  transform: scale(1.05);
+  background: white;
+}
+
+tbody select:hover {
+  border-color: var(--golden-amber);
+  box-shadow: 0 2px 8px rgba(139, 69, 19, 0.1);
+}
+
+/* Enhanced Status Colors with modern touch */
+tbody select option[value="pending"] { 
+  color: var(--warning-orange); 
+  background: rgba(243, 156, 18, 0.1);
+}
+tbody select option[value="processing"] { 
+  color: #3498db; 
+  background: rgba(52, 152, 219, 0.1);
+}
+tbody select option[value="shipped"] { 
+  color: #9b59b6; 
+  background: rgba(155, 89, 182, 0.1);
+}
+tbody select option[value="delivered"] { 
+  color: var(--success-green); 
+  background: rgba(39, 174, 96, 0.1);
+}
+tbody select option[value="cancelled"] { 
+  color: var(--error-red); 
+  background: rgba(231, 76, 60, 0.1);
+}
+
+/* Status Badge Styling */
+tbody td:nth-child(4) {
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.status-pending { 
+  color: var(--warning-orange);
+  background: rgba(243, 156, 18, 0.1);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+}
+
+.status-processing { 
+  color: #3498db;
+  background: rgba(52, 152, 219, 0.1);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+}
+
+.status-shipped { 
+  color: #9b59b6;
+  background: rgba(155, 89, 182, 0.1);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+}
+
+.status-delivered { 
+  color: var(--success-green);
+  background: rgba(39, 174, 96, 0.1);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+}
+
+.status-cancelled { 
+  color: var(--error-red);
+  background: rgba(231, 76, 60, 0.1);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+}
+
+/* Modern Empty State with bakery character */
+.no-orders {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: var(--text-light);
+  font-style: italic;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(245, 230, 211, 0.9) 100%);
+  border-radius: 16px;
+  border: 2px dashed rgba(139, 69, 19, 0.2);
+  position: relative;
+  font-size: 1.1rem;
+}
+
+.no-orders::before {
+  content: '🧁';
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 1rem;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Enhanced Loading State */
+.loading {
+  text-align: center;
+  padding: 3rem;
+  color: var(--primary-brown);
+  font-size: 1.2rem;
+  font-weight: 500;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(245, 230, 211, 0.9) 100%);
+  border-radius: 16px;
+  position: relative;
+}
+
+.loading::before {
+  content: '👨‍🍳';
+  font-size: 2.5rem;
+  display: block;
+  margin-bottom: 1rem;
+  animation: rotate 2s linear infinite;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.loading::after {
+  content: 'Preparing your fresh orders';
+  animation: dots 1.5s steps(3, end) infinite;
+}
+
+@keyframes dots {
+  0%, 33% { content: 'Preparing your fresh orders'; }
+  34%, 66% { content: 'Preparing your fresh orders.'; }
+  67%, 100% { content: 'Preparing your fresh orders..'; }
+}
+
+/* Modern Button Styles (if needed) */
+.btn-bakery {
+  background: linear-gradient(135deg, var(--golden-amber) 0%, var(--modern-accent) 100%);
+  color: #000000;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 25px;
+  font-weight: 600;
+  font-family: 'Open Sans', sans-serif;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(212, 130, 26, 0.3);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.btn-bakery:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(212, 130, 26, 0.4);
+  background: linear-gradient(135deg, var(--modern-accent) 0%, var(--golden-amber) 100%);
+  color: #ffffff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.btn-bakery:active {
+  transform: translateY(-1px);
+  color: #ffffff;
+}
+
+/* Action Icons Enhancement */
+.action-icon {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  margin: 0 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  filter: drop-shadow(2px 2px 4px rgba(139, 69, 19, 0.2));
+}
+
+.action-icon:hover {
+  transform: scale(1.2);
+  filter: drop-shadow(3px 3px 6px rgba(139, 69, 19, 0.3));
+}
+
+/* Decorative Dividers */
+.section-divider {
+  height: 2px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    var(--golden-amber) 25%, 
+    var(--modern-accent) 50%, 
+    var(--golden-amber) 75%, 
+    transparent 100%);
+  margin: 2rem 0;
+  border-radius: 1px;
+}
+
+/* Enhanced Responsive Design */
+@media (max-width: 768px) {
+  .orders-container {
+    padding: 1rem;
+  }
+  
+  .orders-container h2 {
+    font-size: 2.2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .orders-container h2::before,
+  .orders-container h2::after {
+    display: none;
+  }
+  
+  .filters {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.5rem;
+    border-radius: 12px;
+  }
+  
+  .filters select {
+    min-width: auto;
+  }
+  
+  table {
+    font-size: 0.9rem;
+  }
+  
+  thead th {
+    padding: 1rem 0.8rem;
+    font-size: 1rem;
+  }
+  
+  tbody td {
+    padding: 1rem 0.8rem;
+  }
+  
+  tbody select {
+    min-width: 110px;
+    font-size: 0.85rem;
+    padding: 8px 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .orders-container {
+    padding: 0.5rem;
+  }
+  
+  .orders-container h2 {
+    font-size: 1.8rem;
+  }
+  
+  table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+    border-radius: 12px;
+  }
+  
+  thead th {
+    min-width: 120px;
+    padding: 1rem 0.5rem;
+  }
+  
+  tbody td {
+    min-width: 120px;
+    padding: 1rem 0.5rem;
+  }
+  
+  .filters {
+    padding: 1rem;
+    border-radius: 8px;
+  }
+  
+  .filters input,
+  .filters select {
+    padding: 12px 14px;
+    border-radius: 8px;
+  }
+}
+
+/* Dark Mode Support (Modern Touch) */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --warm-cream: #2c1810;
+    --soft-wheat: #3d2817;
+    --text-dark: #f5e6d3;
+    --text-light: #d4c0a1;
+  }
+  
+  .filters {
+    background: linear-gradient(135deg, rgba(45, 24, 16, 0.9) 0%, rgba(61, 40, 23, 0.9) 100%);
+  }
+  
+  .filters input,
+  .filters select {
+    background: linear-gradient(145deg, #3d2817 0%, #2c1810 100%);
+    color: var(--text-dark);
+    border-color: rgba(212, 130, 26, 0.3);
+  }
+  
+  table {
+    background: linear-gradient(145deg, #2c1810 0%, #3d2817 100%);
+  }
+  
+  tbody tr:nth-child(even) {
+    background: linear-gradient(135deg, rgba(61, 40, 23, 0.5) 0%, rgba(45, 24, 16, 0.5) 100%);
+  }
+}
+
+/* Print Styles with traditional bakery elegance */
+@media print {
+  .filters {
+    display: none;
+  }
+  
+  .orders-container {
+    background: white;
+    padding: 1rem;
+  }
+  
+  .orders-container h2 {
+    color: var(--primary-brown);
+    font-size: 2rem;
+  }
+  
+  .orders-container h2::before,
+  .orders-container h2::after {
+    display: none;
+  }
+  
+  tbody select {
+    display: none;
+  }
+  
+  tbody td:last-child::after {
+    content: attr(data-status);
+    font-weight: bold;
+    color: var(--primary-brown);
+    text-transform: capitalize;
+  }
+  
+  table {
+    box-shadow: none;
+    border: 2px solid var(--primary-brown);
+  }
+}
+
+/* Additional Bakery-themed Enhancements */
+.order-priority-high {
+  border-left: 4px solid var(--modern-accent);
+  background: linear-gradient(135deg, rgba(255, 107, 53, 0.05) 0%, transparent 100%);
+}
+
+.fresh-order {
+  position: relative;
+}
+
+.fresh-order::after {
+  content: '✨';
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  animation: sparkle 2s ease-in-out infinite;
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: 0.5; transform: translateY(-50%) scale(1); }
+  50% { opacity: 1; transform: translateY(-50%) scale(1.2); }
+}
+
+/* Scroll Enhancement */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--soft-wheat);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, var(--golden-amber) 0%, var(--primary-brown) 100%);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, var(--primary-brown) 0%, var(--golden-amber) 100%);
+}

@@ -1,0 +1,21 @@
+<!-- At the very top, before your main title/header -->
+<button class="back-btn" (click)="goBack()">⬅ Back</button>
+
+<section class="wishlist-container">
+  <h2>Your Wishlist</h2>
+
+  <div *ngIf="wishlistItems.length === 0" class="empty-message">
+    Your wishlist is empty. Start adding your favorite treats!
+  </div>
+
+  <ul>
+    <li *ngFor="let product of wishlistItems">
+      <div class="product-info">
+        <img [src]="product.icon" alt="Bakery Icon" class="product-icon" />
+        <span class="product-name">{{ product.name }}</span>
+      </div>
+      <span class="product-price">₹ {{ product.price }}</span>
+      <button (click)="removeFromWishlist(product.id)">Remove</button>
+    </li>
+  </ul>
+</section>

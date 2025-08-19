@@ -1,0 +1,60 @@
+<div class="offers-container">
+  <h2>Offers Management</h2>
+  <button (click)="openAddModal()">Add New Offer</button>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Code</th>
+        <th>Type</th>
+        <th>Amount</th>
+        <th>Min Order</th>
+        <th>Expiry Date</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let offer of offers">
+        <td>{{ offer.code }}</td>
+        <td>{{ offer.discountType }}</td>
+        <td>{{ offer.discountType === 'percentage' ? offer.amount + '%' : '₹' + offer.amount }}</td>
+        <td>₹{{ offer.minOrderValue }}</td>
+        <td>{{ offer.expiryDate | date:'shortDate' }}</td>
+        <td>
+          <button (click)="openEditModal(offer)">Edit</button>
+          <button (click)="deleteOffer(offer.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="showModal" class="modal-backdrop">
+    <div class="modal-content">
+      <h3>{{ editingOffer.id ? 'Edit' : 'Add' }} Offer</h3>
+      <form (ngSubmit)="saveOffer()">
+        <label>Code:</label>
+        <input [(ngModel)]="editingOffer.code" name="code" required />
+
+        <label>Discount Type:</label>
+        <select [(ngModel)]="editingOffer.discountType" name="discountType" required>
+          <option value="percentage">Percentage (%)</option>
+          <option value="fixed">Fixed Amount (₹)</option>
+        </select>
+
+        <label>Amount:</label>
+        <input type="number" [(ngModel)]="editingOffer.amount" name="amount" required />
+
+        <label>Minimum Order Value:</label>
+        <input type="number" [(ngModel)]="editingOffer.minOrderValue" name="minOrderValue"/>
+
+        <label>Expiry Date:</label>
+        <input type="date" [(ngModel)]="editingOffer.expiryDate" name="expiryDate" />
+
+        <div class="modal-actions">
+          <button type="submit">Save</button>
+          <button type="button" (click)="closeModal()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

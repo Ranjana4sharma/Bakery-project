@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Quicksand:wght@400;500&display=swap');
+
+.order-history-container {
+  background: #fff9f4;
+  border-radius: 14px;
+  padding: 28px;
+  max-width: 900px;
+  margin: auto;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.05);
+  font-family: 'Quicksand', sans-serif;
+}
+
+.order-history-container h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  color: #a0522d;
+  text-align: center;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.order-history-container h2::after {
+  content: '';
+  width: 65px;
+  height: 4px;
+  background: #f4a261;
+  display: block;
+  margin: 8px auto 0;
+  border-radius: 2px;
+}
+
+/* Table styling */
+.order-history-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  border-radius: 10px;
+  overflow: hidden; /* keeps rounded corners */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.order-history-table th,
+.order-history-table td {
+  padding: 12px 16px;
+  text-align: left;
+}
+
+.order-history-table th {
+  background-color: #fcebdc;
+  color: #5c4033;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.order-history-table td {
+  background: white;
+  border-bottom: 1px solid #f2e6d9;
+  color: #5c4033;
+  font-size: 0.95rem;
+}
+
+/* Zebra striping */
+.order-history-table tbody tr:nth-child(even) td {
+  background-color: #fff5ee;
+}
+
+/* Hover effect on rows */
+.order-history-table tbody tr:hover td {
+  background: #ffe9d6;
+  transition: background 0.3s ease;
+}
+
+/* No orders message */
+.order-history-container p {
+  text-align: center;
+  color: #8b6f47;
+  font-style: italic;
+  background: #fff3e8;
+  padding: 14px;
+  border-radius: 10px;
+}

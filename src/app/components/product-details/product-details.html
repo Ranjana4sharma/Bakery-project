@@ -1,0 +1,35 @@
+<section *ngIf="product" class="product-detail fade-in">
+
+  <!-- Product Image -->
+  <div class="image-container">
+    <img [src]="product.imageUrl" alt="{{ product.name }}" class="product-image" />
+  </div>
+
+  <!-- Product info -->
+  <div class="product-info">
+    <h2 class="product-title">{{ product.name }}</h2>
+
+    <p class="product-description">{{ product.description }}</p>
+
+    <p class="product-price">₹ {{ product.price }}</p>
+
+    <p class="availability">
+      <span class="status-dot"></span>
+      In Stock — ready to deliver
+    </p>
+
+    <p class="category" *ngIf="product.category">
+      Category: <strong>{{ product.category }}</strong>
+    </p>
+
+    <div class="actions">
+      <button class="wishlist-btn" (click)="addToWishlist()">♡ Add to Wishlist</button>
+      <button class="cart-btn" (click)="addToCart()">🛒 Add to Cart</button>
+      <button class="order-btn" (click)="orderProduct()">⚡ Order Now</button>
+    </div>
+
+    <div class="delivery-info">
+      🚚 Delivery within 2–3 days | Free shipping on orders above ₹500
+    </div>
+  </div>
+</section>

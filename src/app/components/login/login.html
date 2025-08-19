@@ -1,0 +1,39 @@
+<form #loginForm="ngForm" (ngSubmit)="onSubmit()" class="login-form">
+  <h2>Login</h2>
+
+  <label>
+    <input type="radio" name="loginType" [(ngModel)]="loginType" [value]="'user'" />
+    Login as User
+  </label>
+  <label style="margin-left:10px;">
+    <input type="radio" name="loginType" [(ngModel)]="loginType" [value]="'admin'" />
+    Login as Admin
+  </label>
+
+  <!-- User Login Form -->
+  <div *ngIf="loginType === 'user'" style="margin-top: 16px;">
+    <label for="name">Name</label>
+    <input id="name" name="username" required minlength="3" [(ngModel)]="username" />
+
+    <label for="phone">Phone Number</label>
+    <input
+      id="phone"
+      name="phone"
+      type="tel"
+      required
+      minlength="4"
+      [(ngModel)]="phone"
+    />
+  </div>
+
+  <!-- Admin Login Form -->
+  <div *ngIf="loginType === 'admin'" style="margin-top: 16px;">
+    <label for="adminUser">Username</label>
+    <input id="adminUser" name="username" required [(ngModel)]="username" />
+
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" required minlength="3" [(ngModel)]="password" />
+  </div>
+
+  <button type="submit" [disabled]="loginForm.invalid" style="margin-top:16px;">Login</button>
+</form>

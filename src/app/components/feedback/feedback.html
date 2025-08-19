@@ -1,0 +1,16 @@
+<div class="feedback-container">
+  <h2>Submit Feedback</h2>
+  <form #feedbackForm="ngForm" (ngSubmit)="onSubmit(feedbackForm)" novalidate>
+    <label>Name:</label>
+    <input type="text" name="name" [(ngModel)]="feedback.name" required />
+    <label>Email:</label>
+    <input type="email" name="email" [(ngModel)]="feedback.email" required />
+    <label>Message:</label>
+    <textarea name="message" [(ngModel)]="feedback.message" required></textarea>
+
+    <button type="submit" [disabled]="!feedbackForm.valid">Submit</button>
+  </form>
+  <div *ngIf="submitted" class="success-message">
+    Thank you for your feedback!
+  </div>
+</div>

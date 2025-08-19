@@ -1,0 +1,92 @@
+<!-- Hero slider -->
+<section class="hero">
+  <div class="hero-text">
+    <h1>{{ bakeryName }}</h1>
+    <p>Soft, fluffy fresh baked buns & cakes to brighten your day!</p>
+    <a routerLink="/shop" class="btn">Explore Our Creations</a>
+  </div>
+  <div class="hero-image">
+    <img [src]="heroImages[currentHeroIndex]" alt="Hero Image" />
+  </div>
+</section>
+
+<!-- Current Offers -->
+<section class="home-offers" *ngIf="allOffers.length > 0">
+  <h2>Current Offers</h2>
+  <div class="offers-grid">
+    <div class="offer-card" *ngFor="let offer of allOffers">
+      <div class="offer-code">{{ offer.code }}</div>
+      <div class="offer-details">
+        <span *ngIf="offer.discountType === 'percentage'">{{ offer.amount }}% OFF</span>
+        <span *ngIf="offer.discountType === 'fixed'">₹{{ offer.amount }} OFF</span>
+      </div>
+      <div class="offer-meta">
+        <div *ngIf="offer.minOrderValue">Min Order: ₹{{ offer.minOrderValue }}</div>
+        <div *ngIf="offer.expiryDate">Valid till {{ offer.expiryDate | date }}</div>
+        <!-- ✅ Safe check -->
+        <div *ngIf="offer.applicableCategories && offer.applicableCategories.length">
+          Categories: {{ offer.applicableCategories.join(', ') }}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Explore Categories -->
+<section class="categories">
+  <h2>Explore Categories</h2>
+  <div class="category-list">
+    <div *ngFor="let cat of categories" class="category-card" (click)="goToCategory(cat)">
+      <img [src]="cat.image" [alt]="cat.name" />
+      <p>{{ cat.name }}</p>
+    </div>
+  </div>
+</section>
+
+<!-- Today's Special -->
+<section class="todays-special">
+  <h2>Today's Special</h2>
+  <div class="special-list">
+    <div *ngFor="let product of todaysSpecial" class="special-card" (click)="openProductModal(product)">
+      <img [src]="product.imageUrl" [alt]="product.name" />
+      <h4>{{ product.name }}</h4>
+    </div>
+  </div>
+</section>
+
+<!-- Modal for product detail -->
+<div class="modal-backdrop" *ngIf="showProductModal" (click)="closeProductModal()"></div>
+<div class="modal" *ngIf="showProductModal">
+  <button class="close-btn" (click)="closeProductModal()">×</button>
+  <img [src]="selectedProduct?.imageUrl" [alt]="selectedProduct?.name" />
+  <h2>{{ selectedProduct?.name }}</h2>
+  <p><strong>Description:</strong> {{ selectedProduct?.description }}</p>
+  <p><strong>Price:</strong> ₹ {{ selectedProduct?.price }}</p>
+  <p><strong>Availability:</strong> Available</p>
+  <div class="actions">
+    <button (click)="addToWishlist(selectedProduct!)">♡ Add to Wishlist</button>
+    <button (click)="orderProduct(selectedProduct!)">Order Now</button>
+  </div>
+</div>
+
+<!-- Gallery Section -->
+<section class="gallery">
+  <h2>Gallery</h2>
+  <div class="gallery-list">
+    <img *ngFor="let img of galleryImages" [src]="img" alt="Gallery image" />
+  </div>
+</section>
+
+<!-- Customer Reviews -->
+<section class="customer-reviews" *ngIf="approvedFeedback.length > 0">
+  <h2>Customer Reviews</h2>
+  <div class="review-grid">
+    <div class="review-card" *ngFor="let r of approvedFeedback">
+      <p class="name">
+        {{ r.name }} - {{ '★'.repeat(r.rating || 0) }}{{ '☆'.repeat(5 - (r.rating || 0)) }}
+      </p>
+      <p class="msg">"{{ r.message }}"</p>
+    </div>
+  </div>
+</section>
+

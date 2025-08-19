@@ -1,0 +1,67 @@
+<div class="signature-container">
+  <!-- Page Header -->
+  <header class="page-header">
+    <h1>Signature Dishes</h1>
+    <p class="bakery-story">{{ bakeryStory }}</p>
+  </header>
+
+  <!-- Special Deals & Combo Offers with Current Offers -->
+  <section class="special-deals">
+    <h2>Special Deals & Combo Offers</h2>
+    <div class="offer-list">
+      <div class="sig-offer" *ngFor="let offer of allOffers" [class.expired]="offer.expiryDate && isExpired(offer.expiryDate)">
+        <strong>{{ offer.code }}</strong> -
+        <span *ngIf="offer.discountType==='percentage'">{{ offer.amount }}% OFF</span>
+        <span *ngIf="offer.discountType==='fixed'">₹{{ offer.amount }} OFF</span>
+        <span *ngIf="offer.minOrderValue"> (Min Order: ₹{{ offer.minOrderValue }})</span>
+        <span *ngIf="offer.expiryDate">
+          | 
+          <span [class.active-offer]="!isExpired(offer.expiryDate)" [class.expired-offer]="isExpired(offer.expiryDate)">
+            Valid till: {{ offer.expiryDate | date }}
+            <span *ngIf="isExpired(offer.expiryDate)"> - Expired</span>
+          </span>
+        </span>
+        <span *ngIf="offer.applicableCategories && offer.applicableCategories.length">
+          | 
+          <span class="category-chip" *ngFor="let cat of offer.applicableCategories">
+            {{ cat }}
+          </span>
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filter and Sort Controls -->
+  <div class="controls">
+    <input
+      type="text"
+      placeholder="Search Signature Dishes..."
+      [(ngModel)]="searchTerm"
+      (input)="applyFilters()"
+      aria-label="Search Signature Dishes"
+    />
+    <select [(ngModel)]="sortBy" (change)="applyFilters()" aria-label="Sort Signature Dishes">
+      <option value="popularity">Sort by Popularity</option>
+      <option value="priceLowHigh">Price: Low to High</option>
+      <option value="priceHighLow">Price: High to Low</option>
+    </select>
+  </div>
+
+  <!-- Signature Dishes Grid -->
+  <main class="dishes-grid">
+    <div *ngFor="let dish of filteredDishes" class="dish-card">
+      <img [src]="dish.imageUrl" [alt]="dish.name" />
+      <h3>{{ dish.name }}</h3>
+      <p class="desc">{{ dish.description }}</p>
+      <p class="price">₹ {{ dish.price }}</p>
+      <div class="actions">
+        <button (click)="openProductDetails(dish)">View Details</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="page-footer">
+    <button (click)="goToShop()" class="btn-shop">Explore Full Menu</button>
+  </footer>
+</div>

@@ -1,0 +1,272 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css');
+
+/* =========================================================
+   General Styles
+========================================================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.contact-section {
+  font-family: 'Poppins', sans-serif;
+  background: url('https://images.unsplash.com/photo-1629961502431-6a5a8816c918?q=80&w=850&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3https://images.pexels.com/photos/32751843/pexels-photo-32751843.jpeg') no-repeat center center/cover;
+  background-color: #fef9f3; /* Fallback warm beige color */
+  min-height: 100vh;
+  padding: 60px 20px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(92, 64, 51, 0.4); /* Subtle chocolate overlay for readability */
+  z-index: 1;
+}
+
+/* =========================================================
+   Animation Keyframes
+========================================================= */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scalePulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+  100% { transform: scale(1); }
+}
+
+@keyframes floatShape {
+  0% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(5deg); }
+  100% { transform: translateY(0) rotate(0deg); }
+}
+
+/* =========================================================
+   Header
+========================================================= */
+.contact-section h1 {
+  font-size: 2.8rem;
+  font-family: 'Dancing Script', cursive;
+  color: #ffcc99; /* Soft peach */
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 2;
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.contact-section p {
+  font-size: 1.2rem;
+  color: #fff;
+  max-width: 600px;
+  text-align: center;
+  margin-bottom: 40px;
+  font-style: italic;
+  position: relative;
+  z-index: 2;
+  animation: fadeInUp 1s ease-out;
+}
+
+/* =========================================================
+   Form
+========================================================= */
+form {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 40px;
+  max-width: 600px;
+  width: 100%;
+  box-shadow: 0 10px 30px rgba(139, 69, 19, 0.2);
+  position: relative;
+  z-index: 2;
+  animation: fadeInUp 1.2s ease-out;
+}
+
+form::before {
+  content: '';
+  position: absolute;
+  top: -80px;
+  right: -80px;
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle, rgba(255, 204, 153, 0.2), transparent 70%);
+  border-radius: 50%;
+  animation: floatShape 10s ease-in-out infinite;
+}
+
+form label {
+  display: block;
+  font-size: 1rem;
+  color: #5c4033; /* Chocolate brown */
+  font-weight: 600;
+  margin-bottom: 10px;
+  position: relative;
+  padding-left: 30px;
+}
+
+form label::before {
+  content: '\f0e0'; /* Envelope icon for name, message; star for rating; comment for type */
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  color: #ff7d2b; /* Vibrant orange */
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1rem;
+}
+
+form label[for="rating"]::before {
+  content: '\f005'; /* Star icon for rating */
+}
+
+form label[for="type"]::before {
+  content: '\f27a'; /* Comment icon for message type */
+}
+
+form input,
+form select,
+form textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ffcc99; /* Soft peach */
+  border-radius: 10px;
+  font-size: 1rem;
+  color: #5c4033;
+  background: rgba(255, 255, 255, 0.8);
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+}
+
+form select {
+  appearance: none;
+  background: rgba(255, 255, 255, 0.8) url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24"><path fill="%235c4033" d="M7 10l5 5 5-5z"/></svg>') no-repeat right 15px center;
+}
+
+form input:focus,
+form select:focus,
+form textarea:focus {
+  outline: none;
+  border-color: #e07b39; /* Vibrant orange */
+  box-shadow: 0 0 10px rgba(224, 123, 57, 0.3);
+}
+
+form input::placeholder,
+form textarea::placeholder {
+  color: #7f8c8d;
+}
+
+form textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+form select option {
+  padding: 10px;
+  color: #5c4033;
+}
+
+form button {
+  background: linear-gradient(135deg, #ff7d2b, #ff9f5a);
+  color: white;
+  padding: 15px 40px;
+  border: none;
+  border-radius: 25px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 auto;
+  transition: all 0.3s ease;
+}
+
+form button::before {
+  content: '\f1d8'; /* Paper plane icon */
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  font-size: 1rem;
+}
+
+form button:hover {
+  background: linear-gradient(135deg, #e07b39, #ffcc99);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(224, 123, 57, 0.3);
+  animation: scalePulse 0.5s;
+}
+
+/* =========================================================
+   Responsive Design
+========================================================= */
+@media (max-width: 768px) {
+  .contact-section {
+    padding: 40px 15px;
+  }
+
+  .contact-section h1 {
+    font-size: 2.2rem;
+  }
+
+  .contact-section p {
+    font-size: 1rem;
+  }
+
+  form {
+    padding: 30px;
+    max-width: 100%;
+  }
+
+  form label {
+    font-size: 0.9rem;
+  }
+
+  form input,
+  form select,
+  form textarea {
+    font-size: 0.9rem;
+  }
+
+  form button {
+    padding: 12px 30px;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-section h1 {
+    font-size: 1.8rem;
+  }
+
+  .contact-section p {
+    font-size: 0.9rem;
+  }
+
+  form {
+    padding: 20px;
+  }
+
+  form label::before {
+    font-size: 0.9rem;
+  }
+
+  form button {
+    padding: 10px 25px;
+    font-size: 0.9rem;
+  }
+}

@@ -1,0 +1,104 @@
+<section *ngIf="currentUser">
+  <button class="back-btn" (click)="goBack()">⬅ Back</button>
+
+  <h2>Welcome, {{ currentUser.username }}!</h2>
+
+  <nav class="profile-nav">
+    <a routerLink="/wishlist">Wishlist</a>
+    <a routerLink="/order-history">Order History</a>
+  </nav>
+
+  <!-- Orders -->
+  <section class="order-history-section">
+    <h3>Your Orders</h3>
+    <app-order-history></app-order-history>
+  </section>
+
+  <!-- Wishlist -->
+  <section class="wishlist-section">
+    <h3>Your Wishlist</h3>
+    <app-wishlist></app-wishlist>
+  </section>
+
+  <!-- Cart Section -->
+  <section class="cart-section">
+    <h3>Your Cart</h3>
+    <table *ngIf="cartItems.length > 0">
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of cartItems">
+          <td>{{ item.name }}</td>
+          <td>₹{{ item.price }}</td>
+          <td>{{ item.quantity }}</td>
+          <td>
+            <button (click)="removeFromCart(item.id)">🗑 Remove</button>
+            <button (click)="moveToWishlist(item)">⇢ Move to Wishlist</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p *ngIf="cartItems.length === 0">Your cart is empty.</p>
+  </section>
+
+  <!-- Offers Section -->
+  <section class="offers-section">
+    <h3>Apply Offer</h3>
+
+    <!-- Eligible offers display -->
+    <div *ngIf="eligibleOffers.length > 0" class="eligible-offers">
+      <p>Available for you:</p>
+      <div class="offer-chip"
+           *ngFor="let offer of eligibleOffers"
+           (click)="applyOfferFromList(offer)">
+        {{ offer.code }} -
+        <span *ngIf="offer.discountType === 'percentage'">{{ offer.amount }}% OFF</span>
+        <span *ngIf="offer.discountType === 'fixed'">₹{{ offer.amount }} OFF</span>
+      </div>
+    </div>
+
+    <!-- Manual entry -->
+    <div class="offer-input">
+      <input type="text" [(ngModel)]="selectedCode" placeholder="Enter offer code" />
+      <button (click)="applyOffer()">Apply</button>
+    </div>
+
+    <div class="message"
+      *ngIf="message"
+      [ngClass]="{ 'success': appliedOffer, 'error': !appliedOffer }">
+      {{ message }}
+    </div>
+
+    <div class="totals">
+      <p><strong>Subtotal:</strong> ₹{{ subtotal }}</p>
+      <p *ngIf="appliedOffer"><strong>Discount ({{ appliedOffer.code }}):</strong> -₹{{ discountAmount }}</p>
+      <p class="final-total"><strong>Total Payable:</strong> ₹{{ finalTotal }}</p>
+    </div>
+
+    <!-- Checkout Buttons -->
+    <div class="checkout-actions" *ngIf="cartItems.length > 0">
+      <button class="prev-btn" (click)="goBack()">⬅ Previous</button>
+      <button class="checkout-btn" (click)="placeCartOrder()">Place Order</button>
+    </div>
+  </section>
+
+  <!-- User Messages -->
+  <section class="user-messages" *ngIf="userMessages.length > 0">
+    <h3>Your Messages & Feedback</h3>
+    <div *ngFor="let m of userMessages" class="message-card">
+      <p><strong>Type:</strong> {{ m.type }}</p>
+      <p><strong>Message:</strong> {{ m.message }}</p>
+      <p *ngIf="m.rating"><strong>Rating:</strong>
+        {{ '★'.repeat(m.rating || 0) }}{{ '☆'.repeat(5 - (m.rating || 0)) }}
+      </p>
+      <p *ngIf="m.adminReply" class="reply"><strong>Admin Reply:</strong> {{ m.adminReply }}</p>
+      <small>{{ m.timestamp | date:'short' }}</small>
+    </div>
+  </section>
+</section>
