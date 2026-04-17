@@ -47,7 +47,7 @@ export class HomeComponent implements OnInit {
   galleryImages: string[] = [
     'https://www.shutterstock.com/image-photo/bakery-shop-assortment-bread-on-600nw-2498875445.jpg',
     'https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?auto=compress&w=600',
-    'https://images.pexels.com/photos/17721684/pexels-photo-17721684.jpeg'
+    'https://images.pexels.com/photos/17721684/pexels-photo-17721684.jpeg',
   ];
 
   allOffers: Offer[] = [];
